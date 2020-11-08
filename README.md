@@ -1,96 +1,27 @@
-# ![FFDC Sample app](./media/ffdc-sample-app-header.png)
+# Endemic
 
-> ### Sample _Corporate Banking application_ using [Finastra's Design System](https://github.com/fusionfabric/finastra-design-system) for the front-end and [FusionFabric.cloud](https://developer.fusionfabric.cloud) for backend.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
-<p align="center">
-  <a href="./LICENSE.md"><img src="https://img.shields.io/github/license/fusionfabric/ffdc-sample-corporate-webapp" alt="Repo License" /></a>
-  <img src="https://img.shields.io/badge/PRs-welcome-green" alt="PRs welcome"/>
-  <a href="https://twitter.com/FinastraFS"><img src="https://img.shields.io/twitter/follow/FinastraFS.svg?style=social&label=Follow"></a>
-</p>
+## Development server
 
-<p align="center">
-  <a href="https://bit.ly/3dNw4Ss" target="_blank">
-    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy with Heroku">
-  </a>
-  <!-- <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ffusionfabric%2Fffdc-sample-corporate-webapp%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="https://aka.ms/deploytoazurebutton"/>
-  </a> -->
-</p>
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-<br/>
+## Code scaffolding
 
-## Demo
-
-<p align="center">
-  <img src="./media/ffdc-corporate-banking-sample-app.gif" alt="Sample app gif"/>
-</p>
-
-<br/>
-
-## Installation
-
-1. [Register an application on FFDC](https://medium.com/finastra-fintechs-devs/create-an-application-on-finastras-developer-portal-d90ef266cafb)
-
-You need to register an application on [FusionFabric.cloud Developer Portal](https://developer.fusionfabric.cloud) and select [Account and Balances - B2C](https://developer.fusionfabric.cloud/solution/real-time-account-balances-and-statement) API.
-
-2. Setup environment variables
-
-Rename `.env.template` to `.env` and setup `OIDC_CLIENT_ID` and `OIDC_CLIENT_SECRET` from the application created at step 1.
-
-3. Run `npm i`
-
-<br/>
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-This application contains two applications :
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-- Angular Application
-- NestJs application
+## Running unit tests
 
-So you need to run two commands :
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-```
-npm run dev           # client build in watch mode
-npm run start:server  # server build in watch mode
-```
+## Running end-to-end tests
 
-Go to http://localhost:3000 and enjoy your demo application 😊
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-> To build for production, use `npm run build:prod`, which will build both the client and server !
+## Further help
 
-<br/>
-
-## Credentials
-
-For testing purpose, you can login with one of the following credentials:
-
-| User        | Password |
-| :---------- | :------- |
-| `ffdcuser1` | `123456` |
-| `ffdcuser2` | `123456` |
-
-<br/>
-
-## Environement variables
-
-| Variable         | Default value                                     |
-| :--------------- | :------------------------------------------------ |
-| `OIDC_CLIENT_ID` |                                                   |
-| `CLIENT_SECRET`  |                                                   |
-| `SESSION_SECRET` | Generated uiid                                    |
-| `FFDC`           | `https://api.fusionfabric.cloud`                  |
-| `PORT`           | `3000`                                            |
-| `OIDC_ISSUER`    | `https://api.fusionfabric.cloud/login/v1/sandbox` |
-| `OIDC_SCOPES`    | `openid profile`                                  |
-| `OIDC_ORIGIN`    | `http://localhost:3000`                           |
-
-<br/>
-
-## License
-
-These sample applications are released under the MIT License. See [LICENSE](./LICENSE) for details.
-
-<br />
-
-[![Brought to you by Finastra](./media/spread-knowledge-readme-banner.png)](https://www.finastra.com/)
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

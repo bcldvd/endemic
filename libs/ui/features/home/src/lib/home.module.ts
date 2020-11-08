@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { InlineSVGModule } from 'ng-inline-svg';
 
 import { SharedModule } from '@ffdc-corporate-banking-sample/ui/shared';
-import { CorporateAccountsModule } from '@ffdc-corporate-banking-sample/ui/services/corporate-accounts';
 import { StatementModule } from '@ffdc-corporate-banking-sample/ui/cdk/statement';
 
 import { HomeComponent } from './home.component';
@@ -21,7 +20,6 @@ import { HomeComponent } from './home.component';
       },
     ]),
     InlineSVGModule.forRoot(),
-    CorporateAccountsModule,
     StatementModule,
   ],
 })

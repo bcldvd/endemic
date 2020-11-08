@@ -6,9 +6,6 @@ import { ProxyModule } from '@ffdc/nestjs-proxy';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProxyConfigService } from './configs/proxy-config.service';
-import { GraphQLModule } from '@nestjs/graphql';
-import { CorporateAccountsModule } from '@ffdc/api_corporate-accounts';
-import { GqlConfigService } from './configs/graphql-config.service';
 import { OidcConfigService } from './configs/oidc-config.service';
 import { ServiceStaticConfigService } from './configs/serve-startic-config.service';
 
@@ -28,10 +25,6 @@ import { ServiceStaticConfigService } from './configs/serve-startic-config.servi
     ProxyModule.forRootAsync({
       useClass: ProxyConfigService,
       imports: [ConfigModule],
-    }),
-    CorporateAccountsModule,
-    GraphQLModule.forRootAsync({
-      useClass: GqlConfigService,
     }),
   ],
   controllers: [AppController],

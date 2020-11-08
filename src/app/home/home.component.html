@@ -1,5 +1,5 @@
 <h1>Welcome to Endemic !</h1>
 
-<ng-container *ngIf="(date$ | async) as date">
-    <p>We're {{date | date}}</p>
-</ng-container>
+<button mat-flat-button [routerLink]="['/order']" [queryParams]="{tenantId: 'restaurant-1'}" color="primary">Try a
+    sample
+    restaurant</button>

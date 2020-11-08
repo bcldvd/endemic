@@ -1,0 +1,9 @@
+<ng-container *ngIf="(tenant$ | async) as tenant; else loading">
+
+</ng-container>
+
+<ng-template #loading>
+    <div id="page-preloader">
+        <div class="page-preloader-spin"></div>
+    </div>
+</ng-template>

@@ -34,18 +34,20 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+// Custom
+
+:root {
+    --logo: url("./assets/endemic-logo.png");
+}
+
 $logo-width: 122px;
 $logo-height: 22px;
 
 .logo {
-    background-image: url("./assets/endemic-logo.png");
+    background-image: var(--logo);
     background-size: contain;
     background-repeat: no-repeat;
     width: $logo-width;
     min-width: $logo-width;
     height: $logo-height;
-}
-
-a.logo {
-    cursor: pointer;
 }

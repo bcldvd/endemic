@@ -1,1 +1,28 @@
-<p>{{date$ | async}}</p>
+<mat-sidenav-container class="uxg-nav">
+    <mat-sidenav #sidenav mode="over">
+        <div class="uxg-nav-header">
+            <div class="logo"></div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="uxg-toolbar uxg-toolbar-elevated">
+            <button mat-icon-button class="uxg-toolbar-menu" (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="logo"></div>
+
+            <span class="fill-remaining-space"></span>
+            <div>
+                <button mat-icon-button color="neutral">
+                    <mat-icon>notifications</mat-icon>
+                </button>
+                <button mat-icon-button color="neutral">
+                    <mat-icon>help_outline</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+        <div class="app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

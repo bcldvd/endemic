@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "endemic"
+    }
+  },
+  "defaultProject": "endemic",
+  "cli": {
+    "analytics": false
+  }
 }

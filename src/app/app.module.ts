@@ -10,6 +10,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,8 +26,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

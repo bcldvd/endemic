@@ -1,5 +1,7 @@
 <ng-container *ngIf="(tenant$ | async) as tenant; else loading">
+    [TODO: Display menu]
 
+    <button [routerLink]="['/pay']">Order</button>
 </ng-container>
 
 <ng-template #loading>

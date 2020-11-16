@@ -1,0 +1,32 @@
+<div class="contact-method-toggle">
+  <mat-button-toggle-group class="uxg-filtering-toggle-group" #contactMethod="matButtonToggleGroup">
+    <mat-button-toggle [value]="ContactMethod.MAIL">
+      <mat-icon>email</mat-icon>
+      <span>Email</span>
+    </mat-button-toggle>
+    <mat-button-toggle [value]="ContactMethod.SMS">
+      <mat-icon>perm_phone_msg</mat-icon>
+      <span>SMS</span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<form novalidate (ngSubmit)="onSubmit(customer, contactMethod.value)" [formGroup]="customer">
+  <mat-form-field appearance="fill" *ngIf="contactMethod.value === ContactMethod.MAIL">
+    <mat-label>Enter email</mat-label>
+    <input matInput placeholder="username@example.com" formControlName="email" required />
+    <mat-error *ngIf="customer.get('email').hasError('required') && customer.get('email').touched">Not a valid email</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="contactMethod.value === ContactMethod.SMS">
+    <mat-label>Enter phone number</mat-label>
+    <input matInput formControlName="phone" required type="tel" />
+    <mat-error *ngIf="customer.get('phone').hasError('required') && customer.get('phone').touched"
+      >Not a valid phone number</mat-error
+    >
+  </mat-form-field>
+
+  <button mat-button *ngIf="contactMethod.value">
+    <mat-icon>check</mat-icon>
+  </button>
+</form>

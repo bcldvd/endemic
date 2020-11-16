@@ -1,1 +1,37 @@
-[TODO: form to enter details]
+<div class="header">
+  <h4 class="uxg-h4">How can we contact you ?</h4>
+
+  <p class="disclaimer">We will only contact you to warn you about being potentially infected by the COVID-19.</p>
+</div>
+
+<div class="content">
+  <ul class="customer-list">
+    <li *ngFor="let customer of customers; index as index">
+      <span class="customer-icon">
+        <mat-icon>person</mat-icon>
+        <mat-icon *ngIf="customer.contactMethod === ContactMethod.MAIL">email</mat-icon>
+        <mat-icon *ngIf="customer.contactMethod === ContactMethod.SMS">perm_phone_msg</mat-icon>
+      </span>
+      <span class="customer-info">
+        <span *ngIf="customer.contactMethod === ContactMethod.MAIL">{{ customer.email }}</span>
+        <span *ngIf="customer.contactMethod === ContactMethod.SMS">{{ customer.phone }}</span>
+      </span>
+      <button mat-icon-button (click)="removeCustomer(index)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </li>
+  </ul>
+
+  <div class="add-customers">
+    <app-add-customer (customerAdded)="onCustomerAdded($event)" *ngIf="customers.length === 0"></app-add-customer>
+
+    <div *ngIf="customers.length > 0">
+      <h5 class="uxg-h5">Any more participants ?</h5>
+      <app-add-customer (customerAdded)="onCustomerAdded($event)"></app-add-customer>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <button mat-raised-button [disabled]="customers.length === 0">Check out</button>
+</div>

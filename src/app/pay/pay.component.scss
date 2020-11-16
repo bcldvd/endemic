@@ -1,0 +1,50 @@
+@import '~@ffdc/uxg-angular-theme/lib/core/style/spacing';
+
+:host {
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+  grid-template-areas:
+    'header'
+    'content'
+    'cta';
+  height: 100%;
+}
+
+.header {
+  grid-area: header;
+}
+
+.content {
+  grid-area: content;
+}
+
+.cta {
+  grid-area: cta;
+
+  button {
+    width: 100%;
+  }
+}
+
+.disclaimer {
+  font-style: italic;
+}
+
+.customer-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: $uxg-spacing-3;
+    display: flex;
+    align-items: center;
+
+    .customer-icon {
+      margin-right: $uxg-spacing-4;
+    }
+
+    .customer-info {
+      flex: 1;
+    }
+  }
+}

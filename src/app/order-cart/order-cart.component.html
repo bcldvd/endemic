@@ -1,0 +1,8 @@
+<app-menu-list [menuItems]="orderCart" (selectItem)="selectItem($event)"></app-menu-list>
+<button mat-raised-button color="warn" [routerLink]="['/order']" [state]="{ cart: orderCart }"
+    [queryParams]="{tenantId: tenantId}">
+    Want more food !
+</button>
+<button mat-raised-button color="primary" [routerLink]="['/pay']">
+    Procced to Checkout
+</button>

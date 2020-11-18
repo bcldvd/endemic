@@ -6,7 +6,6 @@ import { baseEnvironment } from './environment.base';
 
 export const environment = {
   production: false,
-  ...baseEnvironment,
 };
 
 /*

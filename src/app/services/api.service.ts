@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  private url = '/api';
+  private url = 'https://localhost:4200'; // '/api';
 
   constructor(private http: HttpClient) {}
 
   get<T>(url: string) {
-    return this.http.get<T>(`${this.url}${url}`);
+    return this.http.get<T>(`${this.url}${url}`, { headers: { 'Access-Control-Allow-Origin': '*' } });
   }
 
   post<T>(url: string, body: any) {

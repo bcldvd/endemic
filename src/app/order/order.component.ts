@@ -24,14 +24,9 @@ export class OrderComponent implements OnInit {
     private api: ApiService,
     private route: ActivatedRoute,
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {
-    this.iconRegistry.addSvgIcon(
-      'plate',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        '../../assets/plate.svg'
-      )
-    );
+    this.iconRegistry.addSvgIcon('plate', this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/plate.svg'));
   }
 
   ngOnInit(): void {
@@ -39,38 +34,34 @@ export class OrderComponent implements OnInit {
     this.tenant$ = queryParams$.pipe(
       filter((params) => params.tenantId),
       map((params) => params.tenantId),
-      switchMap((tenantId) => this.getTenantInfo(tenantId))
+      switchMap((tenantId) => this.getTenantInfo(tenantId)),
     );
     this.tenant$.subscribe((tenant) => {
       this.setLogo(tenant);
     });
-    this.route.paramMap
-      .pipe(map(() => window.history.state))
-      .subscribe(val => {
-        if (val["cart"] && val["cart"].lenght > 0) {
-          this.orderCart = val["cart"];
-          this.orderCartTotalPrice = this.orderCart.map(a => a.price).reduce(function (a, b) {
+    this.route.paramMap.pipe(map(() => window.history.state)).subscribe((val) => {
+      if (val['cart'] && val['cart'].lenght > 0) {
+        this.orderCart = val['cart'];
+        this.orderCartTotalPrice = this.orderCart
+          .map((a) => a.price)
+          .reduce(function (a, b) {
             return a + b;
           });
-        }
-      })
+      }
+    });
   }
 
   private setLogo(tenant: Tenant) {
     this.setCssVar('logo', `url(${tenant.logoUrl})`);
   }
 
-  private setCssVar(
-    property: string,
-    value: string,
-    element: HTMLElement = document.body
-  ) {
+  private setCssVar(property: string, value: string, element: HTMLElement = document.body) {
     element.style.setProperty(`--${property}`, value);
   }
 
   getTenantInfo(tenantId: string) {
     this.tenantId = tenantId;
-    return this.api.get<Tenant>(`/tenant?tenantId=${tenantId}`);
+    return this.api.get<Tenant>(`/tenant/${tenantId}`);
   }
 
   addItem(menuItem: MenuItem) {

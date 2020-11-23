@@ -1,0 +1,6 @@
+{
+    "/tenant": {
+      "target": "https://endemic-api.eu-gb.mybluemix.net",
+      "secure": false
+    }
+  }

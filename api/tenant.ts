@@ -1,15 +1,9 @@
 import { NowRequest, NowResponse } from '@vercel/node';
-import { menu } from '../data/marzo/menu';
+import { marzo } from '../data/marzo/infos';
 import { Tenant } from '../src/app/order/tenant.interface';
 
 const MOCK_DATA: { [key: string]: Tenant } = {
-  'restaurant-1': {
-    logoUrl: 'http://localhost:3000/assets/marzo.png',
-    bannerUrl: '',
-    menu,
-    id: 'restaurant-1',
-    name: 'Marzo',
-  },
+  'restaurant-1': marzo,
 };
 
 export default (req: NowRequest, res: NowResponse) => {

@@ -14,7 +14,7 @@
 <form novalidate (ngSubmit)="onSubmit(customer, contactMethod.value)" [formGroup]="customer">
   <mat-form-field appearance="fill" *ngIf="contactMethod.value === ContactMethod.MAIL">
     <mat-label>Enter email</mat-label>
-    <input matInput placeholder="username@example.com" formControlName="email" required />
+    <input matInput placeholder="username@example.com" formControlName="email" type="email" required />
     <mat-error *ngIf="customer.get('email').hasError('required') && customer.get('email').touched">Not a valid email</mat-error>
   </mat-form-field>
 

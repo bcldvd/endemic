@@ -1,18 +1,15 @@
-<mat-card matRipple (click)="selectItem.emit(menuItem);" style="margin-bottom: 12px;">
-    <div class="card-container">
+<mat-card matRipple (click)="selectItem.emit(menuItem)" style="margin-bottom: 12px">
+  <mat-card-header>
+    <mat-card-title>{{ menuItem.name }}</mat-card-title>
+    <mat-card-subtitle class="uxg-body-2">{{ menuItem.description }}</mat-card-subtitle>
+  </mat-card-header>
 
-        <div class="card-image mat-elevation-z8">
-            <img [src]="menuItem.imageUrl" alt="Menu Item Image" width="80" height="80">
-        </div>
+  <div class="card-price">
+    <span>${{ menuItem.price }}</span>
+  </div>
 
-        <mat-card-header>
-            <mat-card-title>{{menuItem.name}}</mat-card-title>
-            <mat-card-subtitle>{{menuItem.description}}</mat-card-subtitle>
-        </mat-card-header>
-
-        <div class="card-price">
-            <span>€{{menuItem.price}}</span>
-        </div>
-
-    </div>
+  <div class="card-image">
+    <!-- TODO: Add the quantity if added to cart -->
+    <img [src]="menuItem.imageUrl" alt="Menu Item Image" />
+  </div>
 </mat-card>

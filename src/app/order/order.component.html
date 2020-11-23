@@ -1,26 +1,22 @@
-<ng-container *ngIf="(tenant$ | async) as tenant; else loading">
-    <!-- <div class="checkout-banner">
-        <button mat-raised-button color="primary">Procced to Checkout ({{orderCart.length}})</button>
-    </div> -->
-    <!-- <button [routerLink]="['/pay']">Order</button> -->
-    <app-menu-list [menuItems]="tenant.menuItems" (selectItem)="addItem($event)"></app-menu-list>
-    <div class="banner-cart">
-        <div>
-            €{{orderCartTotalPrice}}
-        </div>
-        <button mat-stroked-button color="primary" [routerLink]="['/order-cart']"
-            [state]="{ tenantId: tenantId, cart: orderCart }">View
-            Cart</button>
-        <div class="cart-items-length">
-            <mat-icon class="cart-items-icon" svgIcon="plate"></mat-icon>
-            {{orderCart.length}}
-        </div>
-    </div>
+<ng-container *ngIf="tenantService.tenant$ | async as tenant; else loading">
+  <app-menu-list [menu]="tenant.menu" (selectItem)="openDialog($event)"></app-menu-list>
+
+  <button
+    *ngIf="orderCart.length > 0"
+    mat-flat-button
+    color="primary"
+    class="banner-cart"
+    [routerLink]="['/order-cart']"
+    [state]="{ tenantId: tenant.id }"
+    [queryParams]="{ tenantId: tenant.id }"
+  >
+    <span class="cta">View Cart</span>
+    <div class="total-price">${{ orderCartTotalPrice }}</div>
+  </button>
 </ng-container>
 
-
 <ng-template #loading>
-    <div id="page-preloader">
-        <div class="page-preloader-spin"></div>
-    </div>
+  <div id="page-preloader">
+    <div class="page-preloader-spin"></div>
+  </div>
 </ng-template>

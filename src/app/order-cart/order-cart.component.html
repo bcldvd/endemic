@@ -1,8 +1,22 @@
-<app-menu-list [menuItems]="orderCart" (selectItem)="selectItem($event)"></app-menu-list>
-<button mat-raised-button color="warn" [routerLink]="['/order']" [state]="{ cart: orderCart }"
-    [queryParams]="{tenantId: tenantId}">
-    Want more food !
+<h3 class="uxg-h3">Your order</h3>
+
+<div class="order-summary">
+  <div *ngFor="let item of orderCart">
+    <span class="quantity">
+      <span>{{ item.quantity || '1' }}</span>
+    </span>
+    <span class="name">{{ item.name }}</span>
+    <span class="price">${{ item.price * (item.quantity || 1) }}</span>
+  </div>
+</div>
+
+<hr />
+
+<button mat-raised-button [routerLink]="['/order']" [queryParams]="{ tenantId: tenantId }">
+  <mat-icon>add</mat-icon>
+  Add items
 </button>
-<button mat-raised-button color="primary" [routerLink]="['/pay']">
-    Procced to Checkout
-</button>
+
+<hr />
+
+<button mat-raised-button color="primary" class="cta-button" [routerLink]="['/pay']">Procced to Checkout</button>

@@ -1,0 +1,41 @@
+@import '~@ffdc/uxg-angular-theme/lib/core/style/spacing';
+@import '../order/mixins.scss';
+
+hr {
+  color: #ccc;
+  margin: $uxg-spacing-2 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 0;
+}
+
+.order-summary > div {
+  display: grid;
+  grid-template-areas: 'quantity name price';
+  grid-template-columns: 40px 1fr 150px;
+  margin: $uxg-spacing-4 $uxg-spacing-2;
+
+  .quantity {
+    grid-area: quantity;
+
+    span {
+      background: rgba(0, 0, 0, 0.04);
+      padding: 4px 10px;
+    }
+  }
+
+  .name {
+    grid-area: name;
+  }
+
+  .price {
+    grid-area: price;
+    justify-self: flex-end;
+  }
+}
+
+.cta-button {
+  @include cta-button;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}

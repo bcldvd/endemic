@@ -1,0 +1,38 @@
+.app-declare-sick {
+  display: flex;
+  flex-direction: column;
+
+  .uxg-h4 {
+    margin-top: 16px;
+    margin-bottom: 48px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .app-declare-sick-email {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    place-content: center space-around;
+    align-items: center;
+
+    .mat-form-field {
+      width: 80%;
+    }
+  }
+  .app-declare-sick-button {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    place-content: center space-around;
+    align-items: center;
+    .app-declare-sick-claim-button {
+      margin-top: 16px;
+    }
+  }
+}

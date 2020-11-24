@@ -1,9 +1,9 @@
-@import "~@ffdc/uxg-angular-theme/lib/core/core";
-@import "~@ffdc/uxg-angular-theme/lib/core/theming/all-theme";
-@import "~@ffdc/uxg-angular-theme/lib/core/typography/typography";
-@import "~@ffdc/uxg-angular-theme/theme-variables";
+@import '~@ffdc/uxg-angular-theme/lib/core/core';
+@import '~@ffdc/uxg-angular-theme/lib/core/theming/all-theme';
+@import '~@ffdc/uxg-angular-theme/lib/core/typography/typography';
+@import '~@ffdc/uxg-angular-theme/theme-variables';
 
-@import "~@ffdc/uxg-angular-components/global-nav/global-nav.theme";
+@import '~@ffdc/uxg-angular-components/global-nav/global-nav.theme';
 
 @include uxg-core();
 
@@ -13,8 +13,8 @@
 
 // Add components theme mixins inside this mixin
 @mixin app-theme($theme) {
-    @include uxg-material-theme($theme);
-    @include uxg-global-nav-theme($theme);
+  @include uxg-material-theme($theme);
+  @include uxg-global-nav-theme($theme);
 }
 
 @include app-typography(uxg-typography-config());
@@ -22,32 +22,37 @@
 @include app-theme($uxg-light-theme);
 
 @media (prefers-color-scheme: dark) {
-    @include app-theme($uxg-dark-theme);
+  @include app-theme($uxg-dark-theme);
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 // Custom
 
 :root {
-    --logo: url("./assets/endemic-logo.png");
+  --logo: url('./assets/endemic-logo.png');
 }
 
 $logo-width: 122px;
 $logo-height: 22px;
 
 .logo {
-    background-image: var(--logo);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: $logo-width;
-    min-width: $logo-width;
-    height: $logo-height;
+  background-image: var(--logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: $logo-width;
+  min-width: $logo-width;
+  height: $logo-height;
+}
+
+.mat-dialog-container {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }

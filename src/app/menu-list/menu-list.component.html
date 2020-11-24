@@ -1,2 +1,6 @@
-<app-item-card *ngFor="let menuItem of menuItems" [menuItem]="menuItem" (selectItem)="selectItem.emit($event)">
-</app-item-card>
+<div class="category" *ngFor="let category of menu">
+  <h4 class="uxg-h4">{{ category.name }}</h4>
+
+  <app-item-card *ngFor="let menuItem of category.items" [menuItem]="menuItem" (selectItem)="selectItem.emit($event)">
+  </app-item-card>
+</div>

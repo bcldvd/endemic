@@ -1,29 +1,31 @@
 @import '~@angular/material/theming';
 @import '~@ffdc/uxg-angular-theme/lib/core/style/spacing';
 
-//$primary: map-get($theme, primary);
+.mat-card {
+  display: grid;
+  grid-template-areas:
+    'description image'
+    'price image';
+  grid-template-columns: 1fr 80px;
 
-.card-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+  mat-card-header {
+    grid-area: description;
+    margin-left: -16px;
+  }
 
-    .card-image {
-        display: flex;
-    }
-    
-    .mat-card-header {
-        flex-grow: 1;
-        align-items: center;
-    }
+  .card-price {
+    grid-area: price;
+    color: #694ed6;
+    font-weight: 500;
+    margin-top: -10px; // TODO: use grid-area the right way to center image for both rows
+  }
 
-    .mat-card-header .mat-card-title {
-        font-size: 14px !important;
-    }
-
-    .card-price {
-        //color: mat-color($primary, default);
-        color: #694ED6;
-        font-weight: 500;
-    }
+  img {
+    grid-area: image;
+    object-fit: cover;
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
 }

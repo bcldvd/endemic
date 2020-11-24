@@ -3,13 +3,23 @@ export interface MenuItem {
   description: string;
   price: number;
   imageUrl: string;
+  quantity?: number;
 }
+
+export interface Category {
+  name: string;
+  items: MenuItem[];
+}
+
+export type Menu = Category[];
+export type Cart = MenuItem[];
 
 export class Tenant {
   logoUrl: string;
   name?: string;
   bannerUrl: string;
-  menuItems: MenuItem[];
+  menu: Menu;
+  id: string;
 }
 
 export const DEFAULT_TENANT = {

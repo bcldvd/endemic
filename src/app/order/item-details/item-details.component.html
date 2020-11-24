@@ -1,0 +1,23 @@
+<div class="item-cover-img">
+  <div class="ici-overlay">
+    <button mat-button (click)="cancel()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+  <img [src]="menuItem.imageUrl" alt="Menu Item Image" />
+</div>
+
+<h2 mat-dialog-title>{{ menuItem.name }}</h2>
+
+<mat-dialog-content class="mat-typography">
+  <div class="uxg-body-1">{{ menuItem.description }}</div>
+
+  <!-- TODO: Add a  -/+ for quantity -->
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="primary" [mat-dialog-close]="menuItem" cdkFocusInitial class="cta-button">
+    <span class="cta">Add 1 to basket</span>
+    <span class="total-price">${{ menuItem.price }}</span>
+  </button>
+</mat-dialog-actions>

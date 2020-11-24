@@ -12,5 +12,8 @@
 
 .app-content {
   padding: $uxg-spacing-2;
+  padding-top: $uxg-spacing-2;
+  margin-top: $uxg-spacing-2;
   height: calc(100% - 72px);
+  overflow: auto;
 }

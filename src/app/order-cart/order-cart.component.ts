@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { MenuItem } from '../order/tenant.interface';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { MenuItem, Tenant } from '../order/tenant.interface';
+import { CartService } from '../services/cart.service';
+import { TenantService } from '../services/tenant.service';
 
 @Component({
   selector: 'app-order-cart',
@@ -10,21 +12,20 @@ import { MenuItem } from '../order/tenant.interface';
   styleUrls: ['./order-cart.component.scss'],
 })
 export class OrderCartComponent implements OnInit {
-
-  state$: Observable<object>;
+  tenant$: Observable<Tenant>;
   tenantId: string;
   orderCart: MenuItem[];
+  orderCartTotalPrice = 0;
 
-  constructor(public activatedRoute: ActivatedRoute) { }
+  constructor(private cartService: CartService, public tenantService: TenantService) {}
 
   ngOnInit(): void {
-    this.state$ = this.activatedRoute.paramMap
-      .pipe(map(() => window.history.state))
+    this.refreshCart();
+  }
 
-    this.state$.subscribe(val => {
-      this.tenantId = val["tenantId"];
-      this.orderCart = val["cart"];
-    })
+  refreshCart() {
+    this.orderCart = this.cartService.get();
+    this.orderCartTotalPrice = this.cartService.calculateTotal(this.orderCart);
   }
 
   selectItem(val: any) {

@@ -1,0 +1,46 @@
+@import '~@ffdc/uxg-angular-theme/lib/core/style/spacing';
+@import '../mixins.scss';
+
+.item-cover-img {
+  margin: -24px;
+  margin-bottom: 0;
+  position: relative;
+
+  .ici-overlay {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+
+    button {
+      transform: scale(1.5);
+    }
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+mat-dialog-content {
+  margin-bottom: $uxg-spacing-4;
+}
+
+.cta-button {
+  @include cta-button;
+
+  ::ng-deep .mat-button-wrapper {
+    display: grid;
+    grid-template-areas: 'empty cta total';
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .cta {
+    grid-area: cta;
+  }
+
+  .total-price {
+    grid-area: total;
+    font-weight: normal;
+  }
+}

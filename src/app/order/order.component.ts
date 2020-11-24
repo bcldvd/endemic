@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ApiService } from '../services/api.service';
+import { CartService } from '../services/cart.service';
+import { TenantService } from '../services/tenant.service';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 import { MenuItem, Tenant } from './tenant.interface';
 
 @Component({
@@ -14,67 +18,40 @@ import { MenuItem, Tenant } from './tenant.interface';
 })
 export class OrderComponent implements OnInit {
   tenant$: Observable<Tenant>;
-  //TODO: implem strategy to keep order on refresh
   orderCart: MenuItem[] = [];
-  orderCartTotalPrice: number = 0;
-  tenantId: string;
-  state$: Observable<object>;
+  orderCartTotalPrice = 0;
 
-  constructor(
-    private api: ApiService,
-    private route: ActivatedRoute,
-    private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
-  ) {
-    this.iconRegistry.addSvgIcon(
-      'plate',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        '../../assets/plate.svg'
-      )
-    );
-  }
+  constructor(private dialog: MatDialog, private cartService: CartService, public tenantService: TenantService) {}
 
   ngOnInit(): void {
-    const queryParams$ = this.route.queryParams;
-    this.tenant$ = queryParams$.pipe(
-      filter((params) => params.tenantId),
-      map((params) => params.tenantId),
-      switchMap((tenantId) => this.getTenantInfo(tenantId))
-    );
-    this.tenant$.subscribe((tenant) => {
-      this.setLogo(tenant);
-    });
-    this.route.paramMap
-      .pipe(map(() => window.history.state))
-      .subscribe(val => {
-        if (val["cart"] && val["cart"].lenght > 0) {
-          this.orderCart = val["cart"];
-          this.orderCartTotalPrice = this.orderCart.map(a => a.price).reduce(function (a, b) {
-            return a + b;
-          });
-        }
-      })
-  }
-
-  private setLogo(tenant: Tenant) {
-    this.setCssVar('logo', `url(${tenant.logoUrl})`);
-  }
-
-  private setCssVar(
-    property: string,
-    value: string,
-    element: HTMLElement = document.body
-  ) {
-    element.style.setProperty(`--${property}`, value);
-  }
-
-  getTenantInfo(tenantId: string) {
-    this.tenantId = tenantId;
-    return this.api.get<Tenant>(`/tenant?tenantId=${tenantId}`);
+    this.refreshCart();
   }
 
   addItem(menuItem: MenuItem) {
-    this.orderCart.push(menuItem);
-    this.orderCartTotalPrice = this.orderCartTotalPrice + menuItem.price;
+    this.cartService.addItem(menuItem);
+    this.refreshCart();
+  }
+
+  refreshCart() {
+    this.orderCart = this.cartService.get();
+    this.orderCartTotalPrice = this.cartService.calculateTotal(this.orderCart);
+  }
+
+  openDialog(menuItem: MenuItem) {
+    const dialogRef = this.dialog.open(ItemDetailsComponent, {
+      data: menuItem,
+      width: '100vw',
+      maxWidth: '100vw',
+      position: {
+        bottom: '0',
+      },
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(filter((result) => result))
+      .subscribe((result: MenuItem) => {
+        this.addItem(result);
+      });
   }
 }

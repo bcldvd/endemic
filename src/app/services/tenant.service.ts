@@ -36,6 +36,6 @@ export class TenantService {
 
   getInfo(tenantId: string) {
     this.tenantId = tenantId;
-    return this.api.get<Tenant>(`/tenant/${tenantId}`);
+    return this.api.get<Tenant>(`/tenant?tenantId=${tenantId}`);
   }
 }

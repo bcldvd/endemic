@@ -5,23 +5,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  // private url = '/';
+  private url = '/api';
 
   constructor(private http: HttpClient) {}
 
   get<T>(url: string) {
-    return this.http.get<T>(url);
+    return this.http.get<T>(`${this.url}${url}`);
   }
 
   post<T>(url: string, body: any) {
-    return this.http.post<T>(url, body);
+    return this.http.post<T>(`${this.url}${url}`, body);
   }
 
   put<T>(url: string, body: any) {
-    return this.http.put<T>(url, body);
+    return this.http.put<T>(`${this.url}${url}`, body);
   }
 
   delete<T>(url: string) {
-    return this.http.delete<T>(url);
+    return this.http.delete<T>(`${this.url}${url}`);
   }
 }

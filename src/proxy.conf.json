@@ -1,0 +1,26 @@
+{
+    "/tenants": {
+        "target": "https://endemic-api-server.herokuapp.com/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/tenant/*": {
+        "target": "https://endemic-api-server.herokuapp.com/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/attendances/*": {
+        "target": "https://endemic-api-server.herokuapp.com/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/covid-19-cases":{
+        "target": "https://endemic-api-server.herokuapp.com/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

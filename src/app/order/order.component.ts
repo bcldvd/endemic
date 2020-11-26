@@ -25,6 +25,9 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshCart();
+    this.tenantService.tenant$.subscribe((data) => {
+      console.log(data);
+    });
   }
 
   addItem(menuItem: MenuItem) {

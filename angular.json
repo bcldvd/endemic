@@ -71,8 +71,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "endemic:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "endemic:build:production"
             }
           }
         },

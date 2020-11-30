@@ -1,4 +1,5 @@
 @import '~@ffdc/uxg-angular-theme/lib/core/style/spacing';
+@import '../order/mixins.scss';
 
 :host {
   display: grid;
@@ -22,7 +23,7 @@
   grid-area: cta;
 
   button {
-    width: 100%;
+    @include cta-button;
   }
 }
 

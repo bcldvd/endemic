@@ -5,12 +5,9 @@ const noderedServerUrl = 'https://endemic-api-server.herokuapp.com';
 export default async (request: NowRequest, response: NowResponse) => {
   const reqBody = request.body as any;
   axios
-    .post(noderedServerUrl + '/covid-19-cases', {
-      email: reqBody.email,
-      date: reqBody.date ? reqBody.date : Date.now(),
-    })
+    .post(noderedServerUrl + '/attendances/tenant/' + reqBody.tenantId, reqBody)
     .then((res) => {
-      response.status(200).send(null);
+      response.status(200).send(res);
     })
     .catch((error) => {
       console.error(error);

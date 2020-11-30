@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PayComponent } from './pay.component';
 
-const routes: Routes = [{ path: '', component: PayComponent }];
+const routes: Routes = [{ path: ':tenantId', component: PayComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PayRoutingModule { }
+export class PayRoutingModule {}

@@ -7,7 +7,7 @@ export default async (request: NowRequest, response: NowResponse) => {
   axios
     .post(noderedServerUrl + '/attendances/tenant/' + reqBody.tenantId, reqBody)
     .then((res) => {
-      response.status(200).send(res);
+      response.status(200).send(null);
     })
     .catch((error) => {
       console.error(error);

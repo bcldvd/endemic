@@ -17,10 +17,13 @@ export class OrderCartComponent implements OnInit {
   orderCart: MenuItem[];
   orderCartTotalPrice = 0;
 
-  constructor(private cartService: CartService, public tenantService: TenantService) {}
+  constructor(private cartService: CartService, public tenantService: TenantService, private route: ActivatedRoute) {
+    // this.tenantId = this.route.snapshot.params.tenantId;
+  }
 
   ngOnInit(): void {
     this.refreshCart();
+    this.tenantId = this.route.snapshot.queryParamMap.get('tenantId');
   }
 
   refreshCart() {

@@ -1,0 +1,6 @@
+{
+    "env": {
+      "ENDEMIC_MAIL_ID": "@endemic-mail-id",
+      "ENDEMIC_MAIL_PWD": "@endemic-mail-pwd"
+    }
+  }

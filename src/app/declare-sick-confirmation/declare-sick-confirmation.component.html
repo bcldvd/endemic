@@ -1,0 +1,25 @@
+<span class="uxg-h4">Verified email</span>
+
+
+<div class="content" *ngIf="emailParam">
+  <img src="../../assets/checked.png"/>
+  <div class="app-declare-sick-email">
+    <p>You have confirmed having tested COVID-19 positive.</p>
+    <p>The contact tracing unit has been informed of your results and will contact all people who were exposed with you within public areas using Endemic.</p>
+    <p>The participation of everyone in the tracing process will help to better control the pandemic.</p>
+    
+  </div>
+</div>
+
+<div class="content" *ngIf="!emailParam">
+  <img src="../../assets/email.png"/>
+  <div class="app-declare-sick-email">
+    <p>Thank you for your input, you received a verification email to confirm that you are positive for COVID-19.</p>
+    <p>The participation of everyone in the tracing process will help to better control the pandemic.</p>
+  </div>
+</div>
+<div class="app-declare-sick-button">
+  <button mat-flat-button color="primary" (click)="back()" class="app-declare-sick-claim-button">Back to home</button>
+</div>
+
+

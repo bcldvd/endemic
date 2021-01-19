@@ -15,10 +15,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./declare-sick-confirmation/declare-sick-confirmation.module').then((m) => m.DeclareSickConfirmationModule),
   },
+  { path: 'open-api', loadChildren: () => import('./open-api/open-api-routing.module').then((m) => m.OpenApiRoutingModule) }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

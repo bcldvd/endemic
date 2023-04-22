@@ -30,7 +30,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.0",
     "@angular/cdk": "^10.2.7",
-    "@angular/cli": "~10.2.0",
+    "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "~10.2.0",
     "@angular/material": "^10.2.7",
     "@ffdc/uxg-angular-components": "^0.22.0",
